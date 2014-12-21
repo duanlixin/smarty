@@ -1,6 +1,6 @@
 <?php
 // smarty 类文件
-$smarty_path = '../../libs/Smarty.class.php';
+$smarty_path = '../../../libs/Smarty.class.php';
 // 模板目录
 $smarty_temp_dir = '../tpl';
 

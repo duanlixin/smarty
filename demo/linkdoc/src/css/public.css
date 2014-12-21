@@ -1,0 +1,113 @@
+
+body {
+    /*height: 4000px;*/
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: #fff;
+    line-height: 50px;
+    border-bottom: 1px solid gray;
+}
+
+header .site-name {
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+header .user-info {
+    margin-left: 30px;
+}
+
+header a {
+    float: right;
+    margin-right: 100px;
+}
+
+nav {
+    position: fixed;
+    top: 80px;
+    left: 30px;
+}
+
+nav.nav-list ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list .list-item .nav-item {
+    margin: 10px 0 10px 20px;
+    font-size: 20px;
+}
+.nav-list .list-item .nav-item a{
+    text-decoration: none;
+}
+
+.nav-list .list-item .nav-title {
+    margin: 0;
+    font-size: 24px;
+}
+
+.cur {
+    border-bottom: 3px solid blue;
+}
+
+.content {
+    min-height: 500px;
+    margin: 80px 0 0 200px;
+    border-left: 1px solid gray;
+    padding: 20px;
+    height: 100%;
+}
+
+.content-box {
+    position: relative;
+}
+.content em {
+    font-style: normal;
+    color: red;
+}
+.box-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    text-align: right;
+    padding: 10px 0;
+}
+
+.box-main {
+    margin-left: 140px;
+}
+.box-item {
+/*    border-bottom: 1px solid gray;*/
+    padding: 10px 0;
+}
+
+
+table {
+    table-layout: fixed;
+    width: 80%;
+    border-right: 1px solid #666;
+    border-bottom: 1px solid #666;
+}
+tr {
+
+}
+
+td, 
+th {
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+}
+th {
+    background: #999;
+}
+td {
+    text-align: center;
+}

@@ -1,0 +1,25 @@
+.img-list {
+    float: right;
+    width: 720px;
+    height: 500px;
+    
+}
+.img-list ul {
+    width: 700px;
+    height: 400px;
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+.img-list ul li{
+    width: 700px;
+    height: 400px;
+    display: none;
+}
+.img-list ul li.cur{
+    display: block;
+}
+.content-box {
+    width: 400px;
+}
