@@ -12,12 +12,10 @@ define(function() {
     ], function(errors, event) {
         if (errors.length > 0) {
             var em = document.querySelectorAll('em');
-            for (var j = 0, emLen = em.length; j < emLen; j++) {
-                em[j].style.display = 'none';
-            }
+            $('em').hide();
             for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
-                errors[i].element.nextSibling.innerHTML = errors[i].message;
-                errors[i].element.nextSibling.style.display = '';
+                $(errors[i].element).next().html(errors[i].message);
+                $(errors[i].element).next().show();
             }
         }
     });

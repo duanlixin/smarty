@@ -4,6 +4,9 @@
 <%block name=b_pagecss%>
     <link rel="stylesheet" type="text/css" href="../src/css/public.css">
     <link rel="stylesheet" type="text/css" href="../src/css/admin.css">
+    <link rel="stylesheet" href="../src/jquery-ui-1.11.2/jquery-ui.css">
+    <script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+    <script src="../src/jquery-ui-1.11.2/jquery-ui.js"></script>
 <%/block%>
 <%block name=b_pagehead%>
 <%strip%>
@@ -27,6 +30,14 @@
             </tr>
         </table>
     </div>
+
+<div id="del-pass" title="删除">
+
+</div>
+<div id="reset-pass" title="重置密码">
+
+</div>
+
 <%/strip%>
 <%/block%>
 
@@ -36,7 +47,6 @@
 
 <%block name=b_pagejs%>
 <%strip%>
-<script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
 <script>
     require(['userlist'], function (userlist) {
     });
