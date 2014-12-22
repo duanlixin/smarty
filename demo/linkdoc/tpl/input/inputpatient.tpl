@@ -4,6 +4,8 @@
 <%block name=b_pagecss%>
     <link rel="stylesheet" type="text/css" href="../src/css/public.css">
     <link rel="stylesheet" type="text/css" href="../src/css/input.css">
+    <script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+    <script src="../src/wheelzoom.js"></script>
 <%/block%>
 <%block name=b_pagehead%>
 <%strip%>
@@ -23,7 +25,7 @@
                 <li><img width="720" height="500" class="zoom" src="../src/img/daisy.jpg" alt="A map of the world." /></li>
             </ul>
             
-            <button id="prev">前页</button><input id="current-index" type="text" value="1">/4页<button id="next">后页</button>
+            <button id="prev">前页</button><input id="currentId" type="text" value="1">/4页<button id="next">后页</button>
         </div>
         <div class="content-box">
             <div class="box-title">姓名</div>
@@ -153,28 +155,17 @@
 
 <%block name=b_pagejs%>
 <%strip%>
-<!--
 <script>
-    require.config({
-        baseUrl: '<%$PATH%>/src',
-        packages: [
-            {
-                name: 'xxx',
-                location: '../dep/xxx/src',
-                main: 'main'
-            },
-            {
-                name: 'qrCode',
-                location: '../dep/yyy/src',
-                main: 'main'
-            }
-        ]
-    });
-
-    require(['XXX'], function (site) {
-        site.init();
+    require(['imgturn'], function (imgturn) {
+        imgturn.init({
+            imgClass: '.zoom',
+            imgWrapper: '.img-list li',
+            nextId: '#next',
+            preId: '#prev',
+            currentClass: 'cur',
+            currentId: '#currentId'
+        });
     });
 </script>
--->
 <%/strip%>
 <%/block%>

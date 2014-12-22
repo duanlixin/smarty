@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../src/css/public.css">
     <link rel="stylesheet" type="text/css" href="../src/css/input.css">
     <link rel="stylesheet" href="../src/jquery-ui-1.11.2/jquery-ui.css">
-    <link rel="stylesheet" href="../src/css/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" href="../src/jquery-ui-1.11.2/jquery-ui-timepicker-addon.css">
     <script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
     <script src="../src/jquery-ui-1.11.2/jquery-ui.js"></script>
 <%/block%>
@@ -135,12 +135,16 @@ ccccccccccccccccccccccccccc
 <%/block%>
 
 <%block name=b_pagejs%>
-<script src="../src/jquery-ui-timepicker-addon.js"></script>
-<script src="../src/jquery-ui-timepicker-zh-CN.js"></script>
-<script src="../src/jquery-ui-sliderAccess.js"></script>
+<script src="../src/jquery-ui-1.11.2/jquery-ui-timepicker-addon.js"></script>
+<script src="../src/jquery-ui-1.11.2/jquery-ui-timepicker-zh-CN.js"></script>
+<script src="../src/jquery-ui-1.11.2/jquery-ui-sliderAccess.js"></script>
 <%strip%>
 <script type="text/javascript">
-$('#basic_example_1').datetimepicker();
+    require(['datetimepicker'], function (datetimepicker) {
+        datetimepicker.init([
+            '#basic_example_1'
+        ]);
+    })
 </script>
 <%/strip%>
 <%/block%>
