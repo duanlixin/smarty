@@ -20,7 +20,7 @@
                 <div class="box-title">用户名</div>
                 <div class="box-main">
                     <div class="box-item">
-                        <input type="text" name="username"><em></em>
+                        <input type="text" name="username" value=""><em></em>
                     </div>
                 </div>
             </div>
@@ -29,6 +29,7 @@
                 <div class="box-main">
                     <div class="box-item">
                         <select name="sele">
+                            <!-- selected = "selected" -->
                             <option value="0">无</option>
                             <option value="1">1111</option>
                             <option value="2">2222</option>
