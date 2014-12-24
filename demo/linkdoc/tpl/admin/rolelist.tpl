@@ -4,6 +4,9 @@
 <%block name=b_pagecss%>
     <link rel="stylesheet" type="text/css" href="../src/css/public.css">
     <link rel="stylesheet" type="text/css" href="../src/css/admin.css">
+    <link rel="stylesheet" href="../src/jquery-ui-1.11.2/jquery-ui.css">
+    <script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+    <script src="../src/jquery-ui-1.11.2/jquery-ui.js"></script>
 <%/block%>
 <%block name=b_pagehead%>
 <%strip%>
@@ -20,13 +23,16 @@
                 <th>角色名</th><th>权限</th><th>操作</th>
             </tr>
             <tr>
-                <td>录入员</td><td>录入员</td><td><a href="#">编辑</a><a href="#">删除</a></td>
+                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="edit" href="#">编辑</a><a userid="xx" username="录入员" class="del" href="#">删除</a></td>
             </tr>
             <tr>
-                <td>录入员</td><td>录入员</td><td><a href="#">编辑</a><a href="#">删除</a></td>
+                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="edit" href="#">编辑</a><a userid="xx" username="录入员" class="del" href="#">删除</a></td>
             </tr>
         </table>
     </div>
+<div id="del" title="删除">
+
+</div>
 <%/strip%>
 <%/block%>
 
@@ -36,28 +42,9 @@
 
 <%block name=b_pagejs%>
 <%strip%>
-<!--
 <script>
-    require.config({
-        baseUrl: '<%$PATH%>/src',
-        packages: [
-            {
-                name: 'xxx',
-                location: '../dep/xxx/src',
-                main: 'main'
-            },
-            {
-                name: 'qrCode',
-                location: '../dep/yyy/src',
-                main: 'main'
-            }
-        ]
-    });
-
-    require(['XXX'], function (site) {
-        site.init();
+    require(['userlist'], function (userlist) {
     });
 </script>
--->
 <%/strip%>
 <%/block%>

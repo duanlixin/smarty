@@ -15,12 +15,12 @@
 <%strip%>
     <%include file="../common/adminnav.tpl" menu="addrole"%>
     <div class="content">
-        <form method="post" action="">
+        <form method="post" action="" name="validate_form">
             <div class="content-box">
                 <div class="box-title">角色名称</div>
                 <div class="box-main">
                     <div class="box-item">
-                        <input type="text">
+                        <input name="rolename" type="text" value=""><em class="error-msg"></em>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="box-title">权限</div>
                 <div class="box-main">
                     <div class="box-item">
-                        <input type="checkbox"><em>PM</em><input type="checkbox"><em>录入员</em><input type="checkbox"><em>QC</em>
+                        <input name="pm" type="checkbox" value="1"><span>PM</span><input name="input" type="checkbox" value="2"><span>录入员</span><input name="qc" type="checkbox" value="3"><span>QC</span><em class="error-msg"></em>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="box-title"></div>
                 <div class="box-main">
                     <div class="box-item">
-                        <input type="submit" value="保存"><input type="checkbox">继续添加
+                        <input type="submit" value="保存"><input name="keepadd" type="checkbox">继续添加
                     </div>
                 </div>
             </div>
@@ -51,28 +51,41 @@
 
 <%block name=b_pagejs%>
 <%strip%>
-<!--
+<script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="../src/validate.js"></script>
 <script>
-    require.config({
-        baseUrl: '<%$PATH%>/src',
-        packages: [
+require(['addvalidate'], function (addvalidate) {
+    addvalidate(
+        [
             {
-                name: 'xxx',
-                location: '../dep/xxx/src',
-                main: 'main'
+                name: 'rolename',
+                display: '角色名',
+                rules: 'required|max_length[10]'
             },
             {
-                name: 'qrCode',
-                location: '../dep/yyy/src',
-                main: 'main'
+                name: 'qc',
+                rules: 'callback_qc'
+            }
+        ],
+        [
+            {
+                name: 'qc',
+                validate: function(value) {
+
+                    if ($('input[name="pm"]')[0].checked || 
+                        $('input[name="input"]')[0].checked || 
+                        $('input[name="qc"]')[0].checked) {
+                        return true;
+                    }
+
+                    return false;
+                },
+                display: '请选择一种权限'
             }
         ]
-    });
 
-    require(['XXX'], function (site) {
-        site.init();
-    });
+    );
+});
 </script>
--->
 <%/strip%>
 <%/block%>

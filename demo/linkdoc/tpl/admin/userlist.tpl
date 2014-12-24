@@ -23,18 +23,18 @@
                 <th>用户名</th><th>角色</th><th>操作</th>
             </tr>
             <tr>
-                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="reset-pass" href="#">重置密码</a><a userid="xx" username="录入员" class="edit-pass" href="#">编辑</a><a userid="xx" username="录入员" class="del-pass" href="#">删除</a></td>
+                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="reset" href="#">重置密码</a><a userid="xx" username="录入员" class="edit" href="#">编辑</a><a userid="xx" username="录入员" class="del" href="#">删除</a></td>
             </tr>
             <tr>
-                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="reset-pass" href="#">重置密码</a><a userid="xx" username="录入员" class="edit-pass" href="#">编辑</a><a userid="xx" username="录入员" class="del-pass" href="#">删除</a></td>
+                <td>录入员</td><td>录入员</td><td><a userid="xx" username="录入员" class="reset" href="#">重置密码</a><a userid="xx" username="录入员" class="edit" href="#">编辑</a><a userid="xx" username="录入员" class="del" href="#">删除</a></td>
             </tr>
         </table>
     </div>
 
-<div id="del-pass" title="删除">
+<div id="del" title="删除">
 
 </div>
-<div id="reset-pass" title="重置密码">
+<div id="reset" title="重置密码">
 
 </div>
 

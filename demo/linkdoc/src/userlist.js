@@ -1,6 +1,6 @@
 define(function() {
 
-    $( '#del-pass' ).dialog({
+    $( '#del' ).dialog({
         autoOpen: false,
         width: 400,
         modal: true,
@@ -15,24 +15,25 @@ define(function() {
             {
                 text: '取消',
                 click: function() {
+                    console.log($(this).attr('userid'));
                     $(this).dialog('close');
                 }
             }
         ]
     });
-    $('.del-pass').click(function(evt) {
+    $('.del').click(function(evt) {
 
         var _this = $(this);
         var userId = _this.attr('userid');
         var userName = _this.attr('username');
-        $('#del-pass').html('删除' + userName + '?');
-        $('#del-pass').attr('userid', userId);
-        $('#del-pass').dialog('open');
+        $('#del').html('删除' + userName + '?');
+        $('#del').attr('userid', userId);
+        $('#del').dialog('open');
         evt.preventDefault();
     });
 
 
-    $( '#reset-pass' ).dialog({
+    $( '#reset' ).dialog({
         autoOpen: false,
         width: 400,
         modal: true,
@@ -52,14 +53,14 @@ define(function() {
             }
         ]
     });
-    $('.reset-pass').click(function(evt) {
+    $('.reset').click(function(evt) {
 
         var _this = $(this);
         var userId = _this.attr('userid');
         var userName = _this.attr('username');
-        $('#reset-pass').html('将wangzhao' + userName + '的密码重置为' + 'LinkDoc！@#');
-        $('#reset-pass').attr('userid', userId);
-        $('#reset-pass').dialog('open');
+        $('#reset').html('将' + userName + '的密码重置为' + 'LinkDoc！@#');
+        $('#reset').attr('userid', userId);
+        $('#reset').dialog('open');
         evt.preventDefault();
     });
 

@@ -15,12 +15,12 @@
 <%strip%>
     <%include file="../common/adminnav.tpl" menu="addprivilege"%>
     <div class="content">
-        <form method="post" action="">
+        <form method="post" action="" name="validate_form">
             <div class="content-box">
                 <div class="box-title">权限名称</div>
                 <div class="box-main">
                     <div class="box-item">
-                        <input type="text">
+                        <input name="privilegename" type="text" value="" ><em class="error-msg"></em>
                     </div>
                 </div>
             </div>
@@ -29,6 +29,14 @@
                 <div class="box-main">
                     <div class="box-item">
                         
+                    </div>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="box-title"></div>
+                <div class="box-main">
+                    <div class="box-item">
+                        <input type="submit" value="保存"><input name="keepadd" type="checkbox">继续添加
                     </div>
                 </div>
             </div>
@@ -43,28 +51,22 @@
 
 <%block name=b_pagejs%>
 <%strip%>
-<!--
+<script src="../src/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="../src/validate.js"></script>
 <script>
-    require.config({
-        baseUrl: '<%$PATH%>/src',
-        packages: [
+require(['addvalidate'], function (addvalidate) {
+    addvalidate(
+        [
             {
-                name: 'xxx',
-                location: '../dep/xxx/src',
-                main: 'main'
-            },
-            {
-                name: 'qrCode',
-                location: '../dep/yyy/src',
-                main: 'main'
+                name: 'privilegename',
+                display: '权限名称',
+                rules: 'required|max_length[10]'
             }
-        ]
-    });
+        ],
+        []
 
-    require(['XXX'], function (site) {
-        site.init();
-    });
+    );
+});
 </script>
--->
 <%/strip%>
 <%/block%>
