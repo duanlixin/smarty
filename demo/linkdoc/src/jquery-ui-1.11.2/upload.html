@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="us">
+<head>
+    <meta charset="utf-8">
+    <title>upload</title>
+    <style type="text/css">
+        .form-image {
+            position: relative;
+        }
+        .form-image img {
+            position: absolute;
+            top: 0;
+            left: 90px;
+        }
+    </style>
+</head>
+<body>
+<form id="upload-form" class="form-image" target="hidden-iframe" action="upload.php" method="post" enctype="multipart/form-data">
+    <input id="upload-input" class="file" type="file" />
+    <input id="upload-submit" class="file-submit" type="submit" value="上传" />
+    <img id="loading" src="indicator.gif" style="display: none;">
+</form>
+
+<iframe id="hidden-iframe" name="hidden-iframe" src="about:blank" style="display:none;"></iframe>
+<script src="external/jquery/jquery.js"></script>
+<script>
+$('#upload-submit').on('click', function(evt) {
+
+    if(!$('#upload-input').val()) {
+        alert('请选择上传文件');
+        evt.preventDefault();
+    }
+    else {
+        // $('#upload-submit')[0].disabled = 'disabled';
+        $('#loading').show();
+    }
+});
+$('#hidden-iframe').on('load', function() {
+
+    var responseText;
+    var iframe = this;
+    if(iframe.contentDocument && iframe.contentDocument.defaultView) {
+        responseText = iframe.contentDocument.defaultView.document.body.innerHTML;
+    }
+    else {
+        responseText = iframe.contentWindow.document.body.innerHTML;
+    }
+    var json = JSON.parse(responseText);
+    console.log(json);
+    if (json.name === 'qttc') {
+        $('#loading').hide();
+    }
+});
+
+
+</script>
+</body>
+</html>

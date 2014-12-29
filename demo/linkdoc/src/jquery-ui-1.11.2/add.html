@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>upload</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<dig:group title="胸透"><label>胸透</label>
+    <dig:null name="operation|xiongtou|null"><div class="content-box"><div class="box-title">无</div><div class="box-main"><div class="box-item"><label><input type="checkbox" class="group_none" value="none" name="operation|xiongtou|null">无</label></div></div></div></dig:null>
+    <dig:text name="operation|xiongtou|zhenduan" style="display: inline;"><div class="content-box"><div class="box-title">诊断</div><div class="box-main"><div class="box-item"><input type="text" name="operation|xiongtou|zhenduan"></div></div></div></dig:text>
+    <dig:date name="operation|xiongtou|shijian" style="display: inline;"><div class="content-box"><div class="box-title">时间</div><div class="box-main"><div class="box-item"><input type="date" name="operation|xiongtou|shijian"></div></div></div></dig:date>
+    <dig:file name="operation|xiongtou|shangchuanwenjian" style="display: inline;"><div class="content-box"><div class="box-title">上传文件</div><div class="box-main"><div class="box-item"><input type="file" name="operation|xiongtou|shangchuanwenjian"></div></div></div></dig:file>
+</dig:group>
+<dig:group title="胸透" muti="true"><label>胸透</label>
+    <dig:null name="operation|xiongtou|null"><div class="content-box"><div class="box-title">无</div><div class="box-main"><div class="box-item"><label><input type="checkbox" class="group_none" value="none" name="operation|xiongtou|null">无</label></div></div></div></dig:null>
+    <dig:text name="operation|xiongtou|zhenduan" style="display: inline;"><div class="content-box"><div class="box-title">诊断</div><div class="box-main"><div class="box-item"><input type="text" name="operation|xiongtou|zhenduan"></div></div></div></dig:text>
+    <dig:date name="operation|xiongtou|shijian" style="display: inline;"><div class="content-box"><div class="box-title">时间</div><div class="box-main"><div class="box-item"><input type="date" name="operation|xiongtou|shijian"></div></div></div></dig:date>
+    <dig:file name="operation|xiongtou|shangchuanwenjian" style="display: inline;"><div class="content-box"><div class="box-title">上传文件</div><div class="box-main"><div class="box-item"><input type="file" name="operation|xiongtou|shangchuanwenjian"></div></div></div></dig:file>
+</dig:group>
+
+<script src="external/jquery/jquery.js"></script>
+<script>
+$('dig\\:group').each(function () {
+    var muti = $(this).attr('muti');
+    if (muti) {
+        var img = $('<img>');
+        img.attr('class', 'add-group');
+        img.attr('src', 'add.jpg');
+        img.attr('width', 40);
+        img.attr('heigth', 40);
+        $(this).before(img);
+    }
+});
+$('body').delegate('.add-group', 'click', function() {
+    var _this = $(this);
+    var prevNode = _this.prev();
+    var cloneNode = $(prevNode).clone(true);
+
+    var img = $('<img>');
+    img.attr('class', 'sub-group');
+    img.attr('src', 'jian.png');
+    img.attr('width', 40);
+    img.attr('heigth', 40);
+    cloneNode.append(img);
+    cloneNode.insertAfter(_this);
+});
+$('body').delegate('.sub-group', 'click', function() {
+    var _this = $(this);
+    _this.parent().remove();
+});
+</script>
+</body>
+</html>
