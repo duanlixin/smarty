@@ -20,7 +20,13 @@
     <input id="upload-submit" class="file-submit" type="submit" value="上传" />
     <img id="loading" src="indicator.gif" style="display: none;">
 </form>
-
+<ul>
+    <li>
+    <span class="image-container"><img src="4.jpg"></span>
+    <span class="file-name lightgray size12">文件名</span>
+    <span class="del size12" imgurl="http://dlx.baidu.com/tousu/4.jpg">删除</span>
+    </li>
+</ul>
 <iframe id="hidden-iframe" name="hidden-iframe" src="about:blank" style="display:none;"></iframe>
 <script src="external/jquery/jquery.js"></script>
 <script>
@@ -46,9 +52,10 @@ $('#hidden-iframe').on('load', function() {
         responseText = iframe.contentWindow.document.body.innerHTML;
     }
     var json = JSON.parse(responseText);
-    console.log(json);
+
     if (json.name === 'qttc') {
         $('#loading').hide();
+        $('#upload-input').val('');
     }
 });
 
