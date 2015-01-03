@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="us">
+<head>
+    <meta charset="utf-8">
+    <title>adddiseasearea</title>
+    <style type="text/css">
+        .add-department-opts {
+            font-size: 24px;
+        }
+
+        .department-opts {
+            margin: 8px 0;
+        }
+
+        .add-area-btn {
+            margin-left: 6px;
+        }
+        .del-department-btn {
+            margin-left: 6px;
+        }
+        .add-group-btn {
+            margin-left: 6px;
+        }
+        .del-area-btn {
+            margin-left: 6px;
+        }
+        .del-group-btn {
+            margin-left: 6px;
+        }
+        .area-opts {
+            padding-left: 40px;
+            margin: 8px 0;
+        }
+
+        .add-group {
+            padding-left: 80px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+医院名称
+
+<div class="content-box">
+    <div class="box-title"><a class="add-department-btn" href="#">添加科室</a><a id="get-data" href="#">获取数据</a><textarea id="result" style="width:400px;height:200px;"></textarea></div>
+    <div class="box-main">
+        <div class="box-item">
+            &nbsp;
+            <input type="hidden" name="department" />
+            <input type="hidden" name="area" />
+            <input type="hidden" name="group" />
+        </div>
+    </div>
+</div>
+<div class="deparent">
+    <div class="content-box departent-part">
+        <div class="box-title">所属科室</div>
+        <div class="box-main">
+            <div class="box-item">
+                <input type="text" class="departmentname" placeholder="输入科室名称" value=""/>
+                <a class="add-area-btn" href="#">添加病区</a>
+                <a class="del-department-btn" href="#">删除科室</a>
+                <div class="content-box area-part">
+                    <div class="box-title">所属病区</div>
+                    <div class="box-main">
+                        <div class="box-item">
+                            <input type="text" class="areaname" placeholder="输入病区名称" value=""/>
+                            <a class="add-group-btn" href="#">添加组</a>
+                            <a class="del-area-btn" href="#">删除病区</a>
+                            <div class="content-box group-part">
+                                <div class="box-title">所属组</div>
+                                <div class="box-main">
+                                    <div class="box-item">
+                                        <input type="text" class="groupname" placeholder="输入组名称" value=""/>
+                                        <a class="del-group-btn" href="#">删除组</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+var departmentHTML = [
+    '<div class="content-box department-part">',
+        '<div class="box-title">所属科室</div>',
+        '<div class="box-main">',
+            '<div class="box-item">',
+                '<input type="text" class="departmentname" placeholder="输入科室名称" />',
+                '<a class="add-area-btn" href="#">添加病区</a>',
+                '<a class="del-department-btn" href="#">删除科室</a>',
+            '</div>',
+        '</div>',
+    '</div>'
+].join('');
+
+// 增加科室事件
+$('.add-department-btn').click(function (evt) {
+    $('.deparent').append(departmentHTML);
+    // linkDepartment();
+    evt.preventDefault();
+});
+
+// 删除科室事件
+$('.deparent').delegate('.del-department-btn', 'click', function(evt) {
+    var _this = $(this);
+    _this.parent().parent().parent().remove();
+    evt.preventDefault();
+});
+// 病区html
+var areaHTML = [
+    '<div class="content-box area-part">',
+        '<div class="box-title">所属病区</div>',
+        '<div class="box-main">',
+            '<div class="box-item">',
+                '<input type="text" class="areaname" placeholder="输入病区名称" />',
+                '<a class="add-group-btn" href="#">添加组</a>',
+                '<a class="del-area-btn" href="#">删除病区</a>',
+            '</div>',
+        '</div>',
+    '</div>'
+].join('');
+// 增加病区事件
+$('.deparent').delegate('.add-area-btn', 'click', function(evt) {
+    var _this = $(this);
+    _this.parent().append(areaHTML);
+    // linkArea();
+    evt.preventDefault();
+});
+
+// 删除病区事件
+$('.deparent').delegate('.del-area-btn', 'click', function(evt) {
+    var _this = $(this);
+    _this.parent().parent().parent().remove();
+    evt.preventDefault();
+});
+// 组html
+var groupHTML = [
+    '<div class="content-box group-part">',
+        '<div class="box-title">所属组</div>',
+        '<div class="box-main">',
+            '<div class="box-item">',
+                '<input type="text" class="groupname" placeholder="输入组名称" />',
+                '<a class="del-group-btn" href="#">删除组</a>',
+            '</div>',
+        '</div>',
+    '</div>'
+].join('');
+
+// 增加组事件
+$('.deparent').delegate('.add-group-btn', 'click', function(evt) {
+    var _this = $(this);
+    _this.parent().append(groupHTML);
+    // linkGroup();
+    evt.preventDefault();
+});
+// 删除组事件
+$('.deparent').delegate('.del-group-btn', 'click', function(evt) {
+    var _this = $(this);
+    _this.parent().parent().parent().remove();
+    evt.preventDefault();
+});
+
+$('#get-data').click( function(evt) {
+    var departments = $('.departent-part');
+    var result = [];
+    $.each(departments, function (index, department) {
+        var departmentname = $(department).find('.departmentname').val();
+        var departmentObject = {
+            title: departmentname,
+            data: []
+        };
+        var areas = $(department).find('.area-part');
+        $.each(areas, function (index, area) {
+            var areaname = $(area).find('.areaname').val();
+            var areaObject = {
+                title: areaname,
+                data: []
+            }
+            departmentObject.data.push(areaObject);
+            var groups = $(area).find('.group-part');
+            $.each(groups, function (index, group) {
+                var groupname = $(group).find('.groupname').val();
+                areaObject.data.push(groupname);
+            });
+        });
+
+        result.push(departmentObject);
+    });
+    console.log(JSON.stringify(result));
+    $('#result').val(JSON.stringify(result));
+    evt.preventDefault();
+});
+
+
+
+</script>
+</body>
+</html>

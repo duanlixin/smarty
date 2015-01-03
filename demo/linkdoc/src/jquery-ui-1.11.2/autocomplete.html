@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="us">
+<head>
+    <meta charset="utf-8">
+    <title>autocompete</title>
+    <link href="jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+
+
+<input id="keyword">
+
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+
+  $(function() {
+
+    $( "#keyword" ).autocomplete({
+      // url: 'api/hospitalsearch'
+      source: "autocomplete.php",
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.value + " aka " + ui.item.id :
+          "Nothing selected, input was " + this.value );
+      }
+      // minLength: 2,
+    });
+    // $('#keyword').keydown(function (evt) {
+    //     var _this = $(this);
+    //     var keyword = _this.val();
+    //     console.log(_this.val());
+
+    //     $.ajax({
+    //       // url: 'api/hospitalsearch'
+    //       url: 'autocomplete.php',
+    //       type: 'get',
+    //       dataType: 'json',
+    //       data: {keyword: keyword},
+    //       success: success,
+    //       error: error
+    //     });
+    // });
+    
+    // function success(json) {
+    //   if(json.status === 'success') {
+    //     setTimeout(function(){
+    //     console.log(json.data)
+    //       $( "#keyword" ).autocomplete({
+    //         source: json.data
+    //       });
+    //     },900);
+    //   }
+    // }
+    // $( "#keyword" ).autocomplete({
+    //   source: []
+    // });
+    // function error(data) {
+
+    // }
+  });
+</script>
+</body>
+</html>
